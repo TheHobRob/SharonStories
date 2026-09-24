@@ -1,0 +1,351 @@
+/* Sharon Stories — shared styles
+   Palette: cream #F5E8C2, slate blue #4C7A96, brown ink #3B2A20, red accent #8B3A3A */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Courier+Prime:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+:root {
+  --cream: #F5E8C2;
+  --blue: #4C7A96;
+  --blue-deep: #3C6178;
+  --ink: #3B2A20;
+  --ink-soft: #6b5a4d;
+  --red: #8B3A3A;
+  --red-hover: #742f2f;
+  --cream-panel: #FBF3DC;
+  --max-width: 480px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--blue);
+  color: var(--ink);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: var(--cream);
+  border-bottom: 2px solid var(--ink);
+  padding: 18px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.site-header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-align: center;
+}
+
+.menu-lines {
+  position: absolute;
+  left: 20px;
+  width: 26px;
+}
+
+.menu-lines span {
+  display: block;
+  height: 2px;
+  background: var(--ink);
+  margin: 5px 0;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 15px 28px;
+  border-radius: 999px;
+  border: none;
+  text-transform: uppercase;
+  min-height: 48px;
+  transition: background 0.15s ease;
+}
+
+.btn:active {
+  background: var(--red-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+/* ---------- Hero (home page) ---------- */
+.hero {
+  background: var(--blue);
+  color: var(--cream);
+  padding: 44px 24px 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 13vw, 3.4rem);
+  margin: 0 0 28px;
+  line-height: 1;
+}
+
+.hero-art {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  margin: 0 auto 8px;
+  display: block;
+}
+
+/* ---------- About / intro block ---------- */
+.intro {
+  padding: 36px 24px 30px;
+  text-align: center;
+}
+
+.intro p {
+  margin: 0 0 22px;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.intro-art {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: 6px auto 26px;
+  display: block;
+}
+
+/* ---------- Spine divider ---------- */
+.spine-divider {
+  display: flex;
+  height: 64px;
+  overflow: hidden;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+
+.spine-divider span {
+  flex: 1;
+  height: 100%;
+}
+
+/* ---------- Events list page ---------- */
+.list-hero {
+  position: relative;
+  background: var(--ink);
+}
+
+.list-hero .spine-divider {
+  height: 190px;
+  border: none;
+}
+
+.list-hero h1 {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1.15;
+  margin: 0;
+  padding: 0 16px;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+}
+
+.events-list {
+  background: var(--blue);
+  padding: 28px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.event-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--blue-deep);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+.event-card__cover {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  background: var(--ink);
+}
+
+.event-card__cover--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 20px;
+}
+
+.event-card__body {
+  padding: 18px 20px 22px;
+  color: var(--cream);
+}
+
+.event-card__title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin: 0 0 6px;
+}
+
+.event-card__date {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.92rem;
+  color: var(--cream);
+  opacity: 0.85;
+  margin: 0 0 16px;
+}
+
+.event-card__cta {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  color: #fff;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+.empty-state {
+  color: var(--cream);
+  text-align: center;
+  padding: 40px 24px;
+  font-size: 1.02rem;
+}
+
+/* ---------- Event detail page ---------- */
+.detail {
+  background: var(--blue);
+  min-height: calc(100vh - 68px);
+  color: var(--cream);
+  padding: 24px 24px 56px;
+}
+
+.back-link {
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.95rem;
+  display: inline-block;
+  margin-bottom: 22px;
+}
+
+.detail__cover {
+  width: 100%;
+  max-width: 320px;
+  display: block;
+  margin: 0 auto 24px;
+  border-radius: 2px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+}
+
+.detail__title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0 0 10px;
+}
+
+.detail__book {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  margin: 0 0 4px;
+  opacity: 0.95;
+}
+
+.detail__datetime {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.98rem;
+  margin: 0 0 24px;
+  opacity: 0.9;
+}
+
+.detail__facts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.98rem;
+}
+
+.detail__facts strong {
+  font-weight: 700;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 24px;
+  background: var(--cream);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+@media (min-width: 481px) {
+  .page {
+    box-shadow: 0 0 40px rgba(0,0,0,0.25);
+  }
+}

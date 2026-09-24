@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scheduled Meetings — Sharon Stories</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <header class="site-header">
+    <div class="menu-lines"><span></span><span></span></div>
+    <a href="index.html" class="brand">Sharon Stories</a>
+  </header>
+
+  <section class="list-hero">
+    <div class="spine-divider" aria-hidden="true">
+      <span style="background:#7a2f2f"></span>
+      <span style="background:#c9a54a"></span>
+      <span style="background:#2f4a5a"></span>
+      <span style="background:#5a3b2e"></span>
+      <span style="background:#3f6b5c"></span>
+      <span style="background:#8a3f52"></span>
+      <span style="background:#2b3f52"></span>
+      <span style="background:#a06a3a"></span>
+      <span style="background:#7a2f2f"></span>
+      <span style="background:#c9a54a"></span>
+    </div>
+    <h1>Scheduled<br>meetings</h1>
+  </section>
+
+  <section class="events-list" id="events-list">
+    <!-- filled in by script below -->
+  </section>
+
+  <footer class="site-footer">Sharon Stories · a small book club</footer>
+
+</div>
+
+<script src="events-data.js"></script>
+<script>
+  const container = document.getElementById('events-list');
+  const sorted = [...EVENTS].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  if (sorted.length === 0) {
+    container.innerHTML = '<p class="empty-state">No meetings scheduled yet — check back soon.</p>';
+  } else {
+    sorted.forEach(ev => {
+      const card = document.createElement('a');
+      card.className = 'event-card';
+      card.href = 'event.html?id=' + encodeURIComponent(ev.id);
+
+      const coverHtml = ev.coverImage
+        ? `<img class="event-card__cover" src="${ev.coverImage}" alt="${ev.bookTitle} cover">`
+        : `<div class="event-card__cover event-card__cover--placeholder">${ev.bookTitle || 'No book set yet'}</div>`;
+
+      card.innerHTML = `
+        ${coverHtml}
+        <div class="event-card__body">
+          <p class="event-card__title">${ev.title}</p>
+          <p class="event-card__date">${ev.dateDisplay}</p>
+          <span class="event-card__cta">View Event →</span>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+</script>
+
+</body>
+</html>

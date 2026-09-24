@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Event — Sharon Stories</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <header class="site-header">
+    <div class="menu-lines"><span></span><span></span></div>
+    <a href="index.html" class="brand">Sharon Stories</a>
+  </header>
+
+  <section class="detail" id="detail">
+    <!-- filled in by script below -->
+  </section>
+
+  <footer class="site-footer">Sharon Stories · a small book club</footer>
+
+</div>
+
+<script src="events-data.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const ev = EVENTS.find(e => e.id === id);
+  const container = document.getElementById('detail');
+
+  if (!ev) {
+    container.innerHTML = `
+      <a class="back-link" href="events.html">← Back to All Events</a>
+      <p style="font-family:'Playfair Display',serif;font-size:1.3rem;">We couldn't find that event.</p>
+    `;
+  } else {
+    const coverHtml = ev.coverImage
+      ? `<img class="detail__cover" src="${ev.coverImage}" alt="${ev.bookTitle} cover">`
+      : '';
+
+    container.innerHTML = `
+      <a class="back-link" href="events.html">← Back to All Events</a>
+      ${coverHtml}
+      <h1 class="detail__title">${ev.title}</h1>
+      ${ev.bookTitle ? `<p class="detail__book">${ev.bookTitle}${ev.bookAuthor ? ' — ' + ev.bookAuthor : ''}</p>` : ''}
+      <p class="detail__datetime">${ev.dateDisplay}${ev.time ? '<br>' + ev.time : ''}</p>
+      <div class="detail__facts">
+        ${ev.food ? `<p><strong>Food:</strong> ${ev.food}</p>` : ''}
+        ${ev.drink ? `<p><strong>Drink:</strong> ${ev.drink}</p>` : ''}
+        ${ev.activity ? `<p><strong>Activity:</strong> ${ev.activity}</p>` : ''}
+      </div>
+    `;
+  }
+</script>
+
+</body>
+</html>
