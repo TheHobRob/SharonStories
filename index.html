@@ -11,44 +11,30 @@
 <div class="page">
 
   <header class="site-header">
-    <div class="menu-lines"><span></span><span></span></div>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+      <span></span><span></span>
+    </button>
     <a href="index.html" class="brand">Sharon Stories</a>
+    <nav class="site-menu" id="site-menu" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="events.html">Events</a>
+    </nav>
   </header>
 
   <section class="hero">
     <h1>Sharon<br>Stories</h1>
-    <svg class="hero-art" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- open book -->
-      <path d="M160 150 L160 100 C140 90 110 88 95 92 L95 140 C112 136 142 138 160 150 Z" stroke="#F5E8C2" stroke-width="2" fill="none"/>
-      <path d="M160 150 L160 100 C180 90 210 88 225 92 L225 140 C208 136 178 138 160 150 Z" stroke="#F5E8C2" stroke-width="2" fill="none"/>
-      <!-- flower stems -->
-      <path d="M70 220 C75 180 65 150 72 120" stroke="#F5E8C2" stroke-width="2" fill="none"/>
-      <path d="M250 220 C245 185 255 155 246 125" stroke="#F5E8C2" stroke-width="2" fill="none"/>
-      <!-- flower 1 -->
-      <g transform="translate(70,115)">
-        <circle r="8" fill="none" stroke="#F5E8C2" stroke-width="2"/>
-        <path d="M0,-8 C10,-22 24,-10 0,0 C24,10 10,22 0,8 C-10,22 -24,10 0,0 C-24,-10 -10,-22 0,-8 Z" stroke="#F5E8C2" stroke-width="1.6" fill="none"/>
-      </g>
-      <!-- flower 2 -->
-      <g transform="translate(246,120)">
-        <circle r="7" fill="none" stroke="#F5E8C2" stroke-width="2"/>
-        <path d="M0,-7 C9,-19 21,-9 0,0 C21,9 9,19 0,7 C-9,19 -21,9 0,0 C-21,-9 -9,-19 0,-7 Z" stroke="#F5E8C2" stroke-width="1.6" fill="none"/>
-      </g>
-    </svg>
+    <div class="hero-art">
+      <img src="images/homepage-flower1.webp" class="hero-flower hero-flower--left" alt="">
+      <img src="images/homepage-book.webp" class="hero-book" alt="">
+      <img src="images/homepage-flower3.webp" class="hero-flower hero-flower--right" alt="">
+    </div>
   </section>
 
   <section class="intro">
     <p>A small reading club for people who like getting lost in a good story — and talking about it over snacks.</p>
     <p>We meet monthly to discuss that month's pick, eat something themed, and do a small activity together.</p>
 
-    <svg class="intro-art" viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M150 130 C150 110 150 90 150 75 C120 65 70 62 40 68 L40 118 C70 112 120 115 150 130 Z" stroke="#3B2A20" stroke-width="2" fill="none"/>
-      <path d="M150 130 C150 110 150 90 150 75 C180 65 230 62 260 68 L260 118 C230 112 180 115 150 130 Z" stroke="#3B2A20" stroke-width="2" fill="none"/>
-      <g transform="translate(150,70)">
-        <circle r="10" fill="none" stroke="#3B2A20" stroke-width="2"/>
-        <path d="M0,-10 C13,-27 30,-13 0,0 C30,13 13,27 0,10 C-13,27 -30,13 0,0 C-30,-13 -13,-27 0,-10 Z" stroke="#3B2A20" stroke-width="1.6" fill="none"/>
-      </g>
-    </svg>
+    <img src="images/homepage-flower2.webp" class="intro-art" alt="">
 
     <a href="events.html" class="btn">See Scheduled Meetings</a>
   </section>
@@ -68,5 +54,6 @@
 
 </div>
 
+<script src="menu.js"></script>
 </body>
 </html>

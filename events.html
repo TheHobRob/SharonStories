@@ -11,23 +11,18 @@
 <div class="page">
 
   <header class="site-header">
-    <div class="menu-lines"><span></span><span></span></div>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+      <span></span><span></span>
+    </button>
     <a href="index.html" class="brand">Sharon Stories</a>
+    <nav class="site-menu" id="site-menu" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="events.html" aria-current="page">Events</a>
+    </nav>
   </header>
 
   <section class="list-hero">
-    <div class="spine-divider" aria-hidden="true">
-      <span style="background:#7a2f2f"></span>
-      <span style="background:#c9a54a"></span>
-      <span style="background:#2f4a5a"></span>
-      <span style="background:#5a3b2e"></span>
-      <span style="background:#3f6b5c"></span>
-      <span style="background:#8a3f52"></span>
-      <span style="background:#2b3f52"></span>
-      <span style="background:#a06a3a"></span>
-      <span style="background:#7a2f2f"></span>
-      <span style="background:#c9a54a"></span>
-    </div>
+    <img src="images/background-books.webp" class="list-hero__bg" alt="">
     <h1>Scheduled<br>meetings</h1>
   </section>
 
@@ -69,5 +64,6 @@
   }
 </script>
 
+<script src="menu.js"></script>
 </body>
 </html>

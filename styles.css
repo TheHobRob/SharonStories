@@ -1,7 +1,7 @@
 /* Sharon Stories — shared styles
    Palette: cream #F5E8C2, slate blue #4C7A96, brown ink #3B2A20, red accent #8B3A3A */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Courier+Prime:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif&family=Courier+Prime:wght@400;700&display=swap');
 
 :root {
   --cream: #F5E8C2;
@@ -25,7 +25,7 @@ body {
   margin: 0;
   background: var(--blue);
   color: var(--ink);
-  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-family: 'Courier Prime', monospace;
   font-size: 17px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -60,7 +60,7 @@ body {
 }
 
 .brand {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Young Serif', serif;
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: 0.06em;
@@ -69,17 +69,74 @@ body {
   text-align: center;
 }
 
-.menu-lines {
+.menu-toggle {
   position: absolute;
-  left: 20px;
-  width: 26px;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  padding: 0 9px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
 }
 
-.menu-lines span {
+.menu-toggle span {
   display: block;
   height: 2px;
+  width: 26px;
   background: var(--ink);
-  margin: 5px 0;
+  transition: transform 0.25s ease;
+}
+
+.menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(5px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:last-child  { transform: translateY(-5px) rotate(-45deg); }
+
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+.site-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--cream);
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.site-menu.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site-header .site-menu a {
+  font-family: 'Young Serif', serif;
+  font-size: 1.4rem;
+  color: var(--ink);
+  padding: 14px 24px;
+}
+
+.site-header .site-menu a[aria-current="page"] {
+  color: var(--red);
+}
+
+.site-header .site-menu a:hover {
+  background: var(--cream-panel);
 }
 
 /* ---------- Buttons ---------- */
@@ -90,7 +147,7 @@ body {
   gap: 8px;
   background: var(--red);
   color: #fff;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Young Serif', serif;
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: 0.03em;
@@ -122,7 +179,7 @@ body {
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Young Serif', serif;
   font-weight: 900;
   font-size: clamp(2.6rem, 13vw, 3.4rem);
   margin: 0 0 28px;
@@ -130,12 +187,28 @@ body {
 }
 
 .hero-art {
-  width: 100%;
-  max-width: 280px;
-  height: auto;
-  margin: 0 auto 8px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  max-width: 340px;
+  margin: 0 auto;
 }
+
+.hero-book {
+  width: 46%;
+  height: auto;
+  object-fit: contain;
+}
+
+.hero-flower {
+  width: 22%;
+  height: auto;
+  object-fit: contain;
+}
+
+.hero-flower--left { margin-top: 20px; }
+.hero-flower--right { margin-top: 4px; }
 
 /* ---------- About / intro block ---------- */
 .intro {
@@ -150,8 +223,8 @@ body {
 }
 
 .intro-art {
-  width: 100%;
-  max-width: 320px;
+  width: auto;
+  max-width: 220px;
   height: auto;
   margin: 6px auto 26px;
   display: block;
@@ -175,22 +248,34 @@ body {
 .list-hero {
   position: relative;
   background: var(--ink);
+  height: 220px;
+  overflow: hidden;
 }
 
-.list-hero .spine-divider {
-  height: 190px;
-  border: none;
+.list-hero__bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.list-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
 }
 
 .list-hero h1 {
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Young Serif', serif;
   font-weight: 700;
   font-size: 2.4rem;
   line-height: 1.15;
@@ -200,7 +285,9 @@ body {
 }
 
 .events-list {
-  background: var(--blue);
+  background-image: linear-gradient(rgba(76,122,150,0.88), rgba(76,122,150,0.88)), url('images/background-bookshelves.webp');
+  background-size: cover;
+  background-position: center;
   padding: 28px 20px 48px;
   display: flex;
   flex-direction: column;
@@ -230,7 +317,7 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--cream);
-  font-family: 'Playfair Display', serif;
+  font-family: 'Young Serif', serif;
   font-size: 1.2rem;
   text-align: center;
   padding: 20px;
@@ -242,7 +329,7 @@ body {
 }
 
 .event-card__title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Young Serif', serif;
   font-weight: 700;
   font-size: 1.4rem;
   margin: 0 0 6px;
@@ -257,7 +344,7 @@ body {
 }
 
 .event-card__cta {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Young Serif', serif;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.9rem;
@@ -278,7 +365,9 @@ body {
 
 /* ---------- Event detail page ---------- */
 .detail {
-  background: var(--blue);
+  background-image: linear-gradient(rgba(76,122,150,0.88), rgba(76,122,150,0.88)), url('images/background-bookshelves.webp');
+  background-size: cover;
+  background-position: center;
   min-height: calc(100vh - 68px);
   color: var(--cream);
   padding: 24px 24px 56px;
@@ -303,14 +392,14 @@ body {
 }
 
 .detail__title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Young Serif', serif;
   font-weight: 700;
   font-size: 2rem;
   margin: 0 0 10px;
 }
 
 .detail__book {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Young Serif', serif;
   font-size: 1.05rem;
   margin: 0 0 4px;
   opacity: 0.95;

@@ -36,7 +36,7 @@ const EVENTS = [
     time: "4:00 PM – 8:00 PM",
     bookTitle: "The Only One Left",
     bookAuthor: "Riley Sager",
-    coverImage: "",
+    coverImage: "images/theonlyoneleft.webp",
     food: "Charcuterie",
     drink: "Something themed",
     activity: "Book discussion questions and DIY bookmark"

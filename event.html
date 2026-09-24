@@ -11,8 +11,14 @@
 <div class="page">
 
   <header class="site-header">
-    <div class="menu-lines"><span></span><span></span></div>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+      <span></span><span></span>
+    </button>
     <a href="index.html" class="brand">Sharon Stories</a>
+    <nav class="site-menu" id="site-menu" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="events.html" aria-current="page">Events</a>
+    </nav>
   </header>
 
   <section class="detail" id="detail">
@@ -55,5 +61,6 @@
   }
 </script>
 
+<script src="menu.js"></script>
 </body>
 </html>
